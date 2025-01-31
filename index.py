@@ -16,6 +16,18 @@ df['Date'] = pd.to_datetime(df['Date'])
 # Adicionando Título
 st.title("GOGL34 - Google")
 
+# Descrição
+
+st.markdown('''**GOGL34 - Google** é um **dashboard interativo** desenvolvido para acompanhar a variação das ações da Google ao longo do tempo. 
+Com ele, é possível visualizar o comportamento dos preços de fechamento das ações e filtrar o período desejado através de um **seletor de datas intuitivo** na barra lateral.
+
+🔹 **Principais funcionalidades:**  
+✅ Exibição do preço de fechamento das ações da Google (**GOGL34**) 📈  
+✅ **Filtro de datas** para análise de períodos específicos 📅  
+✅ Gráfico interativo para melhor visualização das tendências 📊  
+
+Este dashboard é ideal para investidores, analistas e entusiastas do mercado financeiro que desejam monitorar o desempenho da empresa de forma dinâmica e visual. 🚀''')
+
 # Criando a barra lateral para o filtro
 st.sidebar.header("Filtro de Data")
 
