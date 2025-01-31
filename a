@@ -14,10 +14,9 @@ df = df.dropna(axis=1, how='all')
 df['Date'] = pd.to_datetime(df['Date'])
 
 # Filtro de data com o slider
-min_date = df['Date'].min().date()
-max_date = df['Date'].max().date()
+min_date = df['Date'].min()
+max_date = df['Date'].max()
 
-# Filtro de data com o slider
 start_date, end_date = st.slider(
     "Selecione o intervalo de datas",
     min_value=min_date,
@@ -27,7 +26,7 @@ start_date, end_date = st.slider(
 )
 
 # Filtrando os dados com base nas datas selecionadas
-df_filtered = df[(df['Date'].dt.date >= start_date) & (df['Date'].dt.date <= end_date)]
+df_filtered = df[(df['Date'] >= start_date) & (df['Date'] <= end_date)]
 
 # Gerando o gráfico com os dados filtrados
 fig_line = go.Figure([go.Scatter(x=df_filtered['Date'], y=df_filtered['Close'])])
