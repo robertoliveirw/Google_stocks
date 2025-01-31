@@ -13,12 +13,17 @@ df = df.dropna(axis=1, how='all')
 # Convertendo a coluna 'Date' para formato datetime
 df['Date'] = pd.to_datetime(df['Date'])
 
-# Filtro de data com o slider
+# Adicionando Título
+st.title("GOGL34 - Google")
+
+# Criando a barra lateral para o filtro
+st.sidebar.header("Filtro de Data")
+
+# Filtro de data com o slider na barra lateral
 min_date = df['Date'].min().date()
 max_date = df['Date'].max().date()
 
-# Filtro de data com o slider
-start_date, end_date = st.slider(
+start_date, end_date = st.sidebar.slider(
     "Selecione o intervalo de datas",
     min_value=min_date,
     max_value=max_date,
@@ -30,7 +35,7 @@ start_date, end_date = st.slider(
 df_filtered = df[(df['Date'].dt.date >= start_date) & (df['Date'].dt.date <= end_date)]
 
 # Gerando o gráfico com os dados filtrados
-fig_line = go.Figure([go.Scatter(x=df_filtered['Date'], y=df_filtered['Close'])])
+fig_line = go.Figure([go.Scatter(x=df_filtered['Date'], y=df_filtered['Close'], line=dict(color='#007BFF', width=2))])
 
 # Exibindo o gráfico
 st.plotly_chart(fig_line)
